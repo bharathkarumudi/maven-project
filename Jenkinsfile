@@ -22,7 +22,7 @@ pipeline {
 			steps
 			{
 				sh "docker container rm -f tomcat-app" 
-				sh "docker container run -d -name tomcat-app -p 8082:8080 tomcatwebapp:${env.BUILD_ID}"
+				sh "docker container run -d --name tomcat-app -p 8082:8080 tomcatwebapp:${env.BUILD_ID}"
 			}
 		}
 	}
