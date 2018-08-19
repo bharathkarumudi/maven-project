@@ -18,7 +18,7 @@ pipeline {
 			}
 		}		
 
-		stage('Deploy') {
+		stage('Deploy_App') {
 			steps
 			{
 				sh "docker container rm -f tomcat-app" 
