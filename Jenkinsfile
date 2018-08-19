@@ -19,10 +19,14 @@ pipeline {
 
 				stage('Deploy to staging') 
 				{
-					sh "docker container rm -f tomcatapp"
-					sh "docker container run -d -name tomcatapp -p 8082:8080 tomcatwebapp:${env.BUILD_ID}"	
+					steps
+					{
+						sh "docker container rm -f tomcatapp"
+						sh "docker container run -d -name tomcatapp -p 8082:8080 tomcatwebapp:${env.BUILD_ID}"
+				    }
 				}
 			}
 		}
 	}
 }
+
