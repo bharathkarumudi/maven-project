@@ -5,12 +5,30 @@ pipeline {
   }
 	stages {
 
-		stage('Build'){
-			steps{
-                                sh 'mvn clean package'
-                                sh "docker build . -t tomcatwebapp:${env.BUILD_ID}"
+		stage('Build')
+		{
+			steps
+			{
+                 sh 'mvn clean package'               
 			}
+
+		post {
+			success{
+
+				sh "docker build . -t tomcatwebapp:${env.BUILD_ID}"
+			}
+
+		stage('deploy') 
+		{
+			 sh "docker container rm -f tomcatapp"
+			 sh "docker container run -d -name tomcatapp -p 8082:8080 tomcatwebapp:${env.BUILD_ID}"	
+				
+		}
+				
+			
+		 }	
 
 		}
 	}
 }
+
