@@ -21,7 +21,7 @@ pipeline {
 		stage('Deploy') {
 			steps
 			{
-				sh "docker service update --image tomcatwebapp:${env.BUILD_ID} --replicas=4 tomcat-app"
+				sh "docker service create --image tomcatwebapp:${env.BUILD_ID} --replicas=4 tomcat-app"
 			}
 		}
 	}
