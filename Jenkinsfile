@@ -22,7 +22,7 @@ pipeline {
 			steps
 			{
 			     sh "docker service create tomcat-app tomcatwebapp:${env.BUILD_ID}"
-                             #sh "docker service update --image tomcatwebapp:${env.BUILD_ID} --replicas=4 tomcat-app"
+                             //sh "docker service update --image tomcatwebapp:${env.BUILD_ID} --replicas=4 tomcat-app"
 			}
 		}
 	}
